@@ -15,7 +15,7 @@ class Wan
 
   /*
   * Connect or Disconnect WAN
-  * return @array
+  * return @array or @string
   */
   function connect_disconnect()
   {

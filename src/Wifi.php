@@ -16,7 +16,7 @@ class Wifi
 
   /*
   * Enable or Disable Wifi
-  * return @array
+  * return @array or @string
   */
   public function disable_enable()
   {
