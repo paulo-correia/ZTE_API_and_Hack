@@ -2,8 +2,8 @@
 
 require "vendor/autoload.php";
 
-$modem_ip = '192.168.0.1';
-$passwd = 'Tad2010';
+$modem_ip = '';
+$passwd = '';
 
 if ( (strlen($modem_ip)<1) && (strlen($passwd)<1) ) {
   echo "Please set your modem_ip (Ex: 192.168.0.1) and set your password\n";
