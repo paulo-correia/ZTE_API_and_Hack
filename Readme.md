@@ -49,8 +49,9 @@ php index.php **parameters**
 
 Minimum PHP version 5.3.0
 
-To Help please open an issue
-To contribute open a PullRequest
+To Help please open an Issue
+
+To contribute open a Pullrequest
 
 ***
 
