@@ -1,0 +1,27 @@
+{
+    "name": "paulo-correia/zte_api_and_hack",
+    "description": "ZTE API whith PHP and Hack whith SSH",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+           {
+            "name": "Paulo Correia",
+            "role": "Developer",
+            "homepage": "https://github.com/paulo-correia"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+          "ZTE\\":"src/"    }
+  }
+}
