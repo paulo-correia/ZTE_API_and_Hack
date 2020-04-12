@@ -2,8 +2,8 @@
 
 require "vendor/autoload.php";
 
-$modem_ip = '';
-$passwd = '';
+$modem_ip = '192.168.0.1';
+$passwd = 'Tad2010';
 
 if ( (strlen($modem_ip)<1) && (strlen($passwd)<1) ) {
   echo "Please set your modem_ip (Ex: 192.168.0.1) and set your password\n";
@@ -24,13 +24,15 @@ if (!array_key_exists(1, $argv)) {
   echo "-----|--------|---------|\n";
   echo "wifi | on/off |         | => Enable or Disable Wifi\n";
   echo "-----|--------|---------|\n";
+  echo "wan  | on/off |         | => Enable or Disable WAN\n";
+  echo "-----|--------|---------|\n";
   echo "hack |        |         | => Hack Modem\n";
   echo "-----|--------|---------|\n";
   exit;
 }
 
 if ( ($argv[1]!='ls') && ($argv[1]!='rm') && ($argv[1]!='snd')
-  && ($argv[1]!='wifi') && ($argv[1]!='hack') ) {
+  && ($argv[1]!='wifi') && ($argv[1]!='wan') && ($argv[1]!='hack') ) {
     echo "How to use:\n";
     echo "arg1 |  arg2  |   arg3  |\n";
     echo "-----|--------|---------|\n";
@@ -43,6 +45,8 @@ if ( ($argv[1]!='ls') && ($argv[1]!='rm') && ($argv[1]!='snd')
     echo "snd  | Phone# | Message | => Send The 'Message' to Phone#\n";
     echo "-----|--------|---------|\n";
     echo "wifi | on/off |         | => Enable or Disable Wifi\n";
+    echo "-----|--------|---------|\n";
+    echo "wan  | on/off |         | => Enable or Disable WAN\n";
     echo "-----|--------|---------|\n";
     echo "hack |        |         | => Hack Modem\n";
     echo "-----|--------|---------|\n";
@@ -142,6 +146,33 @@ if ( ($argv[1] == 'wifi')) {
   if ($argv[2]=="off") {
     $wifi = new Wifi($modem_ip,'DIS');
     $ret = $wifi->disable_enable();
+  }
+
+  var_dump($ret);
+}
+
+use ZTE\Wan;
+// Connect or Disconnect WAN
+if ($argv[1] == 'wan') {
+
+  if(!array_key_exists(2,$argv)) {
+    echo "on or off\n";
+    exit;
+  }
+
+  if ( ($argv[2]!="on") &&  ($argv[2]!="off") ) {
+    echo "on or off\n";
+    exit;
+  }
+
+  if ($argv[2]=="on") {
+    $wan = new Wan($modem_ip,'CON');
+    $ret = $wan->connect_disconnect();
+  }
+
+  if ($argv[2]=="off") {
+    $wan = new Wan($modem_ip,'DIS');
+    $ret = $wan->connect_disconnect();
   }
 
   var_dump($ret);

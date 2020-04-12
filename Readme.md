@@ -16,6 +16,8 @@ Login.php - Login
 
 Wifi.php - WiFi Enable / Disable
 
+Wan.php - Wan Connect / Disconnect
+
 Hack.php - Hack the Modem
 
 ## How to Use PHP Class
@@ -43,6 +45,7 @@ php index.php **parameters**
 |   rm       | '*'        |             |**Delete all Messages**|
 |   snd      | Phone#     | 'Message'   |**Send The 'Message' to Phone#**|
 |   wifi     | on/off     |             |**Enable or Disable Wifi**|
+|   wan      | on/off     |             |**Connect or Disconnect WAN**|
 |   hack     |            |             |**Hack Modem**|
 
 **Obs:** Tested with PHP 7.2.29

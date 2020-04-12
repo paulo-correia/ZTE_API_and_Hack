@@ -22,6 +22,10 @@ class Curl
     $this->_verb = $verb;
   }
 
+  /*
+  * Do Curl GET or POST
+  * return @string
+  */
   public function get_post()
   {
     if ( ($this->_type != "GET") && ($this->_type != "POST") ) {
