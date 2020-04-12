@@ -196,11 +196,17 @@ Pass: admin
 
 [https://gist.github.com/mariodian/65641792700d237d30f3f47d24c746e0](http://gist.github.com/mariodian/65641792700d237d30f3f47d24c746e0) - for script shell
 
-[https://gist.github.com/mariodian/bafe4b0a83226d7680ee41424c4e5b7b](http://gist.github.com/mariodian/bafe4b0a83226d7680ee41424c4e5b7b) - for [https://pushover.net]
-(http://https://pushover.net)
+[https://gist.github.com/mariodian/bafe4b0a83226d7680ee41424c4e5b7b](http://gist.github.com/mariodian/bafe4b0a83226d7680ee41424c4e5b7b) - for pushover
+
+[https://pushover.net](http://https://pushover.net)
 
 [https://www.fr.net.br/2016/02/modem-zte-mf823l-avaliacao.html](http://https://www.fr.net.br/2016/02/modem-zte-mf823l-avaliacao.html)
 
 [http://my-router.blogspot.com/2015/09/zte-mf823-4g-change-ip-of-modem-and-get.html](http://http://my-router.blogspot.com/2015/09/zte-mf823-4g-change-ip-of-modem-and-get.html)
 
 [http://blog.asiantuntijakaveri.fi/2017/03/backdoor-and-root-shell-on-zte-mf286.html](http://blog.asiantuntijakaveri.fi/2017/03/backdoor-and-root-shell-on-zte-mf286.html) - for Hack
+
+[https://www.base64encode.org](http://https://www.base64encode.org) - for code and decode base64
+
+[https://incarnate.github.io/curl-to-php/](https://incarnate.github.io/curl-to-php/) - for convert curl to PHP curl
+
