@@ -27,7 +27,7 @@ class Json
   */
   public function decode_encode()
   {
-    if ( ($this->_type!= "DEC") && ($this_type != "ENC") ) {
+    if ( ($this->_type!= "DEC") && ($this->_type != "ENC") ) {
       return "Error_-_Invalid_Json_Type";
     }
 
