@@ -12,7 +12,7 @@ Hex.php - Hex Encode / Decode
 
 Sms.php - Sms List, Send and Delete Message(s)
 
-Login.php - Login
+Login.php - Login / Logoff
 
 Wifi.php - WiFi Enable / Disable
 
@@ -40,6 +40,7 @@ php index.php **parameters**
 
 | parameter1 | parameter2 |  parameter3 | Result |
 |------------|------------|-------------|--------|
+|   login    | on/off     |             |**Login or Logoff Modem**|
 |   ls       |            |             |**List all Messages** |
 |	  rm       | #          |             |**Delete the Message #**|
 |   rm       | '*'        |             |**Delete all Messages**|
@@ -77,6 +78,16 @@ curl -s --header "Referer: http://<modem_ip>/index.html" -d 'isTest=false&goform
 
 if is OK {"result":"3"}
 if is BAD {"result":"1"}
+```
+
+### Logoff
+```
+Method: POST
+
+curl -s --header "Referer: http://<modem_ip>/index.html" -d 'isTest=false&goformId=LOGOFF' http://<modem_ip>/goform/goform_set_cmd_process
+
+
+if is OK {"result":"sucess"}
 ```
 
 ### SMS List
@@ -212,4 +223,3 @@ Pass: admin
 [https://www.base64encode.org](https://www.base64encode.org) - for code and decode base64
 
 [https://incarnate.github.io/curl-to-php/](https://incarnate.github.io/curl-to-php/) - for convert curl to PHP curl
-

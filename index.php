@@ -14,6 +14,8 @@ if (!array_key_exists(1, $argv)) {
   echo "How to use:\n";
   echo "arg1 |  arg2  |   arg3  |\n";
   echo "-----|--------|---------|\n";
+  echo "login| on/off |         | => Login or Logoff\n";
+  echo "-----|--------|---------|\n";
   echo "ls   |        |         | => List all Messages\n";
   echo "-----|--------|---------|\n";
   echo "rm   | #      |         | => Delete the # Message\n";
@@ -31,10 +33,12 @@ if (!array_key_exists(1, $argv)) {
   exit;
 }
 
-if ( ($argv[1]!='ls') && ($argv[1]!='rm') && ($argv[1]!='snd')
+if ( ($argv[1]!='login') && ($argv[1]!='ls') && ($argv[1]!='rm') && ($argv[1]!='snd')
   && ($argv[1]!='wifi') && ($argv[1]!='wan') && ($argv[1]!='hack') ) {
     echo "How to use:\n";
     echo "arg1 |  arg2  |   arg3  |\n";
+    echo "-----|--------|---------|\n";
+    echo "login| on/off |         | => Login or Logoff\n";
     echo "-----|--------|---------|\n";
     echo "ls   |        |         | => List all Messages\n";
     echo "-----|--------|---------|\n";
@@ -55,9 +59,35 @@ if ( ($argv[1]!='ls') && ($argv[1]!='rm') && ($argv[1]!='snd')
 
 use ZTE\Login;
 
-// First do Login
-$login = new Login($modem_ip, $passwd);
-$login->login();
+if ($argv[1] == 'login') {
+
+  if(!array_key_exists(2,$argv)) {
+    echo "on or off\n";
+    exit;
+  }
+
+  if ( ($argv[2]!="on") &&  ($argv[2]!="off") ) {
+    echo "on or off\n";
+    exit;
+  }
+
+  if ($argv[2]=="on") {
+    // First do Login
+    $login = new Login($modem_ip, 'IN', $passwd);
+    $ret = $login->login_logout();
+
+    var_dump ($ret);
+
+    $login = new Login($modem_ip, 'OUT', $passwd);
+    $login->login_logout();
+  }
+
+  if ($argv[2]=="off") {
+    $login = new Login($modem_ip, 'OUT', $passwd);
+    $ret = $login->login_logout();
+    var_dump ($ret);
+  }
+}
 
 use ZTE\Sms;
 
@@ -66,9 +96,17 @@ $sms = new Sms($modem_ip);
 // Get Message List
 if ($argv[1] == 'ls') {
 
+  // First do Login
+  $login = new Login($modem_ip, 'IN', $passwd);
+  $login->login_logout();
+
   $messages = $sms->read_sms();
 
   var_dump($messages);
+
+  // Do Logout
+  $login = new Login($modem_ip, 'OUT', $passwd);
+  $login->login_logout();
 }
 
 // Delete Message
@@ -84,6 +122,11 @@ if ( ($argv[1] == 'rm')) {
 
   if (!is_array($ret)) {
     var_dump($ret);
+
+    // Do Logout
+    $login = new Login($modem_ip, 'OUT', $passwd);
+    $login->login_logout();
+
     exit;
   }
 
@@ -92,6 +135,10 @@ if ( ($argv[1] == 'rm')) {
   } else {
     var_dump($ret);
   }
+
+  // Do Logout
+  $login = new Login($modem_ip, 'OUT', $passwd);
+  $login->login_logout();
 }
 
 // Send Message
@@ -107,12 +154,21 @@ if ($argv[1] =='snd') {
     exit;
   }
 
+  // First do Login
+  $login = new Login($modem_ip, 'IN', $passwd);
+  $login->login_logout();
+
   $phone = $sms->setPhone($argv[2]);
   $message = $sms->setMessage($argv[3]);
   $ret = $sms->send_sms();
 
   if (!is_array($ret)) {
     var_dump($ret);
+
+    // Do Logout
+    $login = new Login($modem_ip, 'OUT', $passwd);
+    $login->login_logout();
+
     exit;
   }
 
@@ -122,6 +178,9 @@ if ($argv[1] =='snd') {
     var_dump($ret);
   }
 
+  // Do Logout
+  $login = new Login($modem_ip, 'OUT', $passwd);
+  $login->login_logout();
 }
 
 use ZTE\Wifi;
@@ -138,6 +197,10 @@ if ( ($argv[1] == 'wifi')) {
     exit;
   }
 
+  // First do Login
+  $login = new Login($modem_ip, 'IN', $passwd);
+  $login->login_logout();
+
   if ($argv[2]=="on") {
     $wifi = new Wifi($modem_ip,'ENA');
     $ret = $wifi->disable_enable();
@@ -149,6 +212,10 @@ if ( ($argv[1] == 'wifi')) {
   }
 
   var_dump($ret);
+
+  // Do Logout
+  $login = new Login($modem_ip, 'OUT', $passwd);
+  $login->login_logout();
 }
 
 use ZTE\Wan;
@@ -165,6 +232,10 @@ if ($argv[1] == 'wan') {
     exit;
   }
 
+  // First do Login
+  $login = new Login($modem_ip, 'IN', $passwd);
+  $login->login_logout();
+
   if ($argv[2]=="on") {
     $wan = new Wan($modem_ip,'CON');
     $ret = $wan->connect_disconnect();
@@ -176,6 +247,10 @@ if ($argv[1] == 'wan') {
   }
 
   var_dump($ret);
+
+  // Do Logout
+  $login = new Login($modem_ip, 'OUT', $passwd);
+  $login->login_logout();
 }
 
 use ZTE\Hack;
@@ -189,4 +264,8 @@ if ( ($argv[1] == 'hack')) {
   var_dump($root);
   $nvram = $hack->exploits_nvram();
   var_dump($nvram);
+
+  // Do Logout
+  $login = new Login($modem_ip, 'OUT', $passwd);
+  $login->login_logout();
 }
