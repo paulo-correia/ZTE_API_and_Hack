@@ -62,6 +62,8 @@ To contribute open a Pullrequest
 
 ## API
 
+This modem does not have API documentation.
+
 ### Work with MF253M (Tested), MF823L, MF286, maybe others whit Web GUI
 
 modem_ip is your modem IP
