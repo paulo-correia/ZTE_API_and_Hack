@@ -69,7 +69,7 @@ This modem does not have API documentation.
 modem_ip is your modem IP
 
 Password is base64 encoded
-[https://www.base64encode.org](http://https://www.base64encode.org)
+[https://www.base64encode.org](https://www.base64encode.org)
 
 ### Login
 ```
